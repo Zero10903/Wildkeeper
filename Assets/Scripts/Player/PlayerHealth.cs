@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private float ActualHealth;
-    [SerializeField] private float MaxHealth;
+    [SerializeField] private float _actualHealth;
+    [SerializeField] private float _maxHealth;
 
     private void Start()
     {
-        ActualHealth = MaxHealth;
-        Debug.Log($"Actual Health ={ActualHealth}");
+        _actualHealth = _maxHealth;
+        Debug.Log($"Actual Health ={_actualHealth}");
     }
 
-    public void Damage(float damage) { ActualHealth -= damage; }
+    public void Damage(float damage) { _actualHealth -= damage; }
 
     public void Heal(float heal)
     {
-        if (ActualHealth >= MaxHealth) { return; }
-        if (ActualHealth <= MaxHealth) { ActualHealth += heal; }
+        if (_actualHealth >= _maxHealth) { return; }
+        if (_actualHealth <= _maxHealth) { _actualHealth += heal; }
     }
-    void Update() { if (ActualHealth <= 0) { return; } }
+    void Update() { if (_actualHealth <= 0) { return; } }
 }
