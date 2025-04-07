@@ -6,9 +6,11 @@ public class PlayerMovement : MonoBehaviour  {
     
     private Rigidbody2D _rb2D;
     private Vector2 _moveInput;
-    
+
     [Header("Movement")]
-    [SerializeField] private float speed = 4f;
+    [SerializeField] private float _speed;
+    public bool IsMoving => _moveInput != Vector2.zero;
+    public void SetSpeed(float newSpeed) { _speed = newSpeed;}
 
     void Awake() {
         _rb2D = GetComponent<Rigidbody2D>();
@@ -21,6 +23,6 @@ public class PlayerMovement : MonoBehaviour  {
     }
 
     void FixedUpdate() {
-        _rb2D.MovePosition(_rb2D.position + _moveInput * speed * Time.fixedDeltaTime);
+        _rb2D.MovePosition(_rb2D.position + _moveInput * _speed * Time.fixedDeltaTime);
     }
 }
